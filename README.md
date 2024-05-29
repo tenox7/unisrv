@@ -1,8 +1,8 @@
 # UniSrv - Universal Server
 
-A **VERY INSECURE** LAN only, anonymous, wide open server.
+An **EXTREMELY INSECURE**, LAN only, anonymous, wide open server.
 
-DO NOT USE
+**WARNING** DO NOT USE !!!
 
 ## Servers
 
