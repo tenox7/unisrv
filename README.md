@@ -20,13 +20,14 @@ All servers expose `/srv` directory. Mount it as a volume with `-v`.
 ```sh
 docker run \
 	--rm -d --privileged \
+	--name unisrv \
 	-v /myhost/dir:/srv \
 	-p 69:69/udp \
 	-p 139:139 -p 445:445 \
 	-p 21:21 -p 65530-65534:65530-65534 \
 	-p 111:111/udp -p 111:111/tcp \
 	-p 2049:2049/udp -p 2049:2049/tcp \
-	unisrv
+	tenox7/unisrv:latest
 ```
 
 ## Issues
