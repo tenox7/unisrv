@@ -8,4 +8,6 @@ ADD exports /etc/exports
 ADD proftpd.conf /etc/proftpd/proftpd.conf
 ADD smb.conf /etc/samba/smb.conf
 ADD init /init
+ARG TARGETARCH
+ADD minihttpd-${TARGETARCH} /usr/sbin/minihttpd
 ENTRYPOINT ["/init"]

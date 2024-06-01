@@ -1,4 +1,5 @@
 #!/bin/sh
+minihttpd -path /srv -addr :80 &
 in.tftpd -u root -p -s -c -l /srv
 proftpd
 smbd

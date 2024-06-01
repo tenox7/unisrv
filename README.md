@@ -23,6 +23,7 @@ docker run \
 	--name unisrv \
 	-v /myhost/dir:/srv \
 	-p 69:69/udp \
+	-p 80:80 \
 	-p 139:139 -p 445:445 \
 	-p 21:21 -p 65530-65534:65530-65534 \
 	-p 111:111/udp -p 111:111/tcp \
