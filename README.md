@@ -10,12 +10,15 @@ An **EXTREMELY INSECURE**, LAN only, anonymous, wide open server.
 - PROFTPD
 - TFTPD
 - SAMBA
+- CADDY HTTP + UPLOAD
 
 ## Directory
 
 All servers expose `/srv` directory. Mount it as a volume with `-v`.
 
 ## Running
+
+Pick a local directory and mount it under `/srv` using `-v`:
 
 ```sh
 docker run \
@@ -33,7 +36,9 @@ docker run \
 
 ## Issues
 
-### On macOS unable to bind to 0.0.0.0/111: use your host static IP address:
+### On macOS unable to bind to 0.0.0.0/111
+
+use your host static IP address:
 
 ```sh
 docker run ... -p 192.168.0.5:111:111/udp -p 192.168.0.5:111:111/tcp
