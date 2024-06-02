@@ -12,5 +12,5 @@ ADD smb.conf /etc/samba/smb.conf
 ADD init /init
 COPY --from=builder /caddy /usr/sbin/caddy
 ADD Caddyfile /Caddyfile
-ADD index.html /index.html
+ADD index.tmpl /index.html
 ENTRYPOINT ["/init"]
