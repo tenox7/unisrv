@@ -1,16 +1,16 @@
 # UniSrv - Universal Server
 
-An **EXTREMELY INSECURE**, LAN only, anonymous, wide open server.
+An **EXTREMELY INSECURE**, LAN only, anonymous, wide open, all in one, universal server.
 
 **WARNING** DO NOT USE !!!
 
 ## Servers
 
-- UNFS3
-- PROFTPD
-- TFTPD
-- SAMBA
-- CADDY HTTP + UPLOAD
+- Unfs3
+- Samba
+- ProFTPD
+- Tftpd
+- Caddy HTTP + Upload
 
 ## Directory
 
@@ -22,9 +22,9 @@ Pick a local directory and mount it under `/srv` using `-v`:
 
 ```sh
 docker run \
+	-v /myhost/dir:/srv \
 	--rm -d --privileged \
 	--name unisrv \
-	-v /myhost/dir:/srv \
 	-p 69:69/udp \
 	-p 80:80 \
 	-p 139:139 -p 445:445 \
@@ -34,7 +34,9 @@ docker run \
 	tenox7/unisrv:latest
 ```
 
-## Issues
+To disable certain services just remove the `-p` port mappings.
+
+## Troubleshooting
 
 ### On macOS unable to bind to 0.0.0.0/111
 
@@ -47,11 +49,15 @@ docker run ... -p 192.168.0.5:111:111/udp -p 192.168.0.5:111:111/tcp
 ### On macOS unable to connect to tftpd
 
 This is because it needs `modprobe nf_nat_tftp` and `nf_conntrack_tftp`.
-Maybe set network mode to host? `--network=host`
+Maybe set network mode to host or bridge?
 
 ### NFS mount fails with rpc.statd or lockd
 
+Use nolock NFS mount option:
+
+```sh
 mount -o nolock
+```
 
 ## References
 
