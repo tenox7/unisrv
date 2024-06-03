@@ -1,1 +1,1 @@
-/srv (rw,all_squash,insecure)
+/srv (rw,no_root_squash,insecure)

@@ -1,9 +1,10 @@
 #!/bin/sh
 hostname unisrv
+syslogd
 telnetd
 in.tftpd -u root -p -s -c -l /srv
 proftpd
 smbd
 rpcbind
-unfsd
+unfsd -s
 caddy run
