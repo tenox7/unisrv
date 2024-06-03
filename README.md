@@ -11,6 +11,7 @@ An **EXTREMELY INSECURE**, LAN only, anonymous, wide open, all in one, universal
 - ProFTPD
 - Tftpd
 - Caddy HTTP + Upload
+- Telnet (omg)
 
 ## Directory
 

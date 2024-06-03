@@ -1,5 +1,7 @@
 #!/bin/sh
+hostname unisrv
 caddy run &
+telnetd
 in.tftpd -u root -p -s -c -l /srv
 proftpd
 smbd
