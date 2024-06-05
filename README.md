@@ -10,7 +10,7 @@ An **EXTREMELY INSECURE**, LAN only, anonymous, wide open, all in one, universal
 - Samba
 - ProFTPD
 - Tftpd
-- Caddy HTTP + Upload
+- WFM for httpd+upload
 - Telnet (omg)
 
 ## Directory

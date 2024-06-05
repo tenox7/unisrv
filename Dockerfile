@@ -1,7 +1,10 @@
-FROM caddy:2-builder AS builder
+FROM golang as builder
 WORKDIR /src
+RUN git clone https://github.com/tenox7/wfm.git
+WORKDIR /src/wfm
+RUN go mod download
 ARG TARGETARCH
-RUN GOOS=linux GOARCH=${TARGETARCH} xcaddy build --with github.com/git001/caddyv2-upload --output /caddy-${TARGETARCH}
+RUN CGO_ENABLED=0 GOOS=linux GOARCH=${TARGETARCH} go build -o /wfm-${TARGETARCH}
 FROM alpine
 RUN apk add --no-cache unfs3 rpcbind e2fsprogs-extra proftpd tftp-hpa samba-server busybox-extras
 RUN passwd -d root
@@ -14,7 +17,5 @@ ADD proftpd.conf /etc/proftpd/proftpd.conf
 ADD smb.conf /etc/samba/smb.conf
 ADD init /init
 ARG TARGETARCH
-COPY --from=builder /caddy-${TARGETARCH} /usr/sbin/caddy
-ADD Caddyfile /Caddyfile
-ADD index.tmpl /index.tmpl
+COPY --from=builder /wfm-${TARGETARCH} /usr/sbin/wfm
 ENTRYPOINT ["/init"]

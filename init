@@ -7,4 +7,4 @@ proftpd
 smbd
 rpcbind
 unfsd -s
-caddy run
+wfm -chroot /srv -addr :80 -nopass_rw -site_name unisrv -show_dot
