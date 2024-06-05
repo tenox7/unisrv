@@ -1,6 +1,7 @@
 FROM caddy:2-builder AS builder
 WORKDIR /src
-RUN xcaddy build --with github.com/git001/caddyv2-upload --output /caddy
+ARG TARGETARCH
+RUN GOOS=linux GOARCH=${TARGETARCH} xcaddy build --with github.com/git001/caddyv2-upload --output /caddy-${TARGETARCH}
 FROM alpine
 RUN apk add --no-cache unfs3 rpcbind e2fsprogs-extra proftpd tftp-hpa samba-server busybox-extras
 RUN passwd -d root
@@ -12,7 +13,8 @@ ADD exports /etc/exports
 ADD proftpd.conf /etc/proftpd/proftpd.conf
 ADD smb.conf /etc/samba/smb.conf
 ADD init /init
-COPY --from=builder /caddy /usr/sbin/caddy
+ARG TARGETARCH
+COPY --from=builder /caddy-${TARGETARCH} /usr/sbin/caddy
 ADD Caddyfile /Caddyfile
 ADD index.tmpl /index.tmpl
 ENTRYPOINT ["/init"]

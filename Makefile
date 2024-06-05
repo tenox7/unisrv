@@ -1,3 +1,5 @@
 docker:
-	docker buildx build --platform linux/arm64 -t tenox7/unisrv:latest --load .
-#linux/amd64,
+	docker buildx build --platform linux/amd64,linux/arm64 -t tenox7/unisrv:latest --push .
+
+clean:
+	docker buildx prune -a -f
