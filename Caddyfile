@@ -9,7 +9,7 @@
 		browse /index.tmpl
 	}
 	upload /upload POST {
-		dest_dir /
+		dest_dir_field_name dir
 		file_field_name file
 	}
 }

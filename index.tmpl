@@ -3,9 +3,10 @@
     <body>
         <form action="/upload" method="post" enctype="multipart/form-data">
             <input type="file" name="file">
+            <input type="hidden" name="dir" value="{{html .Path}}">
             <input type="submit" value="Upload">
         </form>
-        <pre>curl -F file=@yourfile.dat http://{{.Host}}/upload</pre>
+        <pre>curl -F file=@yourfile.dat -F dir=hostpath/ http://{{.Host}}/upload</pre>
         <hr>
         <p>{{range $i, $crumb := .Breadcrumbs}}<a href="{{html $crumb.Link}}">{{html $crumb.Text}}</a>{{if ne $i 0}}/{{end}}{{end}}</p>
         <table>
