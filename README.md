@@ -21,7 +21,10 @@ All servers expose `/srv` directory. Mount it as a volume with `-v`.
 
 Docker Hub: https://hub.docker.com/r/tenox7/unisrv
 
-Pick a local directory and mount it under `/srv` using `-v`:
+Pick a local directory and mount it under `/srv` using `-v`.
+
+For use with passive ftp, supply host IP address as `HOST_ADDRESS` env var.
+On Linux you can use `hostname -i`, on macOS you may want to replace `hostname -i` with `ipconfig getifaddr en0` or just hardcode it.
 
 ```sh
 docker run \
@@ -38,7 +41,7 @@ docker run \
 	tenox7/unisrv:latest
 ```
 
-On macOS you may want to replace `hostname -i` with `ipconfig getifaddr en0` etc.
+
 
 ## Troubleshooting
 
