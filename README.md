@@ -19,6 +19,8 @@ All servers expose `/srv` directory. Mount it as a volume with `-v`.
 
 ## Running
 
+Docker Hub: https://hub.docker.com/r/tenox7/unisrv
+
 Pick a local directory and mount it under `/srv` using `-v`:
 
 ```sh
