@@ -6,4 +6,5 @@ docker-push:
 
 clean:
 	docker rmi -f tenox7/unisrv:latest
+	docker builder prune -a -f
 	docker buildx prune -a -f

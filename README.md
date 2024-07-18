@@ -10,6 +10,7 @@ An **EXTREMELY INSECURE**, LAN only, anonymous, wide open, all in one, universal
 - Samba
 - ProFTPD
 - Tftpd
+- Rcpd
 - WFM for httpd+upload
 - Telnet (omg)
 
@@ -35,6 +36,7 @@ docker run \
 	-p 69:69/udp \
 	-p 80:80 \
 	-p 139:139 -p 445:445 \
+	-p 514:514 \
 	-p 21:21 -p 50000-50100:50000-50100 \
 	-p 111:111/udp -p 111:111/tcp \
 	-p 2049:2049/udp -p 2049:2049/tcp \

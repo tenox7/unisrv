@@ -9,4 +9,5 @@ proftpd
 smbd
 rpcbind
 unfsd -s
+rcpd -root_dir=/srv &
 wfm -chroot /srv -addr :80 -nopass_rw -site_name unisrv -show_dot
