@@ -5,14 +5,23 @@ WORKDIR /src/wfm
 RUN go mod download
 ARG TARGETARCH
 RUN CGO_ENABLED=0 GOOS=linux GOARCH=${TARGETARCH} go build -o /wfm-${TARGETARCH}
+
 WORKDIR /src
 RUN git clone https://github.com/tenox7/rcpd.git
 WORKDIR /src/rcpd
 RUN go mod download
 ARG TARGETARCH
 RUN CGO_ENABLED=0 GOOS=linux GOARCH=${TARGETARCH} go build -o /rcpd-${TARGETARCH}
+
+WORKDIR /src
+RUN git clone https://github.com/tenox7/tftpd.git
+WORKDIR /src/tftpd
+RUN go mod download
+ARG TARGETARCH
+RUN CGO_ENABLED=0 GOOS=linux GOARCH=${TARGETARCH} go build -o /tftpd-${TARGETARCH}
+
 FROM alpine
-RUN apk add --no-cache unfs3 rpcbind e2fsprogs-extra proftpd tftp-hpa samba-server busybox-extras
+RUN apk add --no-cache unfs3 rpcbind e2fsprogs-extra proftpd samba-server busybox-extras
 RUN passwd -d root
 RUN rm -f /etc/securetty
 RUN mkdir /run/proftpd
@@ -25,4 +34,5 @@ ADD init /init
 ARG TARGETARCH
 COPY --from=builder /wfm-${TARGETARCH} /usr/sbin/wfm
 COPY --from=builder /rcpd-${TARGETARCH} /usr/sbin/rcpd
+COPY --from=builder /tftpd-${TARGETARCH} /usr/sbin/tftpd
 ENTRYPOINT ["/init"]

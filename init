@@ -2,7 +2,6 @@
 hostname unisrv
 syslogd
 telnetd
-in.tftpd -u root -p -s -c -l /srv
 sed -i "s/MasqueradeAddress.*$/MasqueradeAddress ${HOST_ADDRESS:-127.0.0.1}/" /etc/proftpd/proftpd.conf
 echo -e "${HOST_ADDRESS:-127.0.0.1}\tunisrv" >> /etc/hosts
 proftpd
@@ -10,4 +9,5 @@ smbd
 rpcbind
 unfsd -s
 rcpd -root_dir=/srv &
+tftpd -root_dir=/srv &
 wfm -chroot /srv -addr :80 -nopass_rw -site_name unisrv -show_dot
