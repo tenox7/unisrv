@@ -13,6 +13,7 @@ An **EXTREMELY INSECURE**, LAN only, anonymous, wide open, all in one, universal
 - Rcpd
 - WFM for httpd+upload
 - Telnet (omg)
+- lighttpd (for kodi)
 
 ## Directory
 
@@ -34,7 +35,7 @@ docker run \
 	--name unisrv \
 	-e HOST_ADDRESS=$(hostname -i) \
 	-p 69:69/udp \
-	-p 80:80 \
+	-p 80-81:80-81 \
 	-p 139:139 -p 445:445 \
 	-p 514:514 \
 	-p 21:21 -p 50000-50100:50000-50100 \

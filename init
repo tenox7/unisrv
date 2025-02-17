@@ -10,4 +10,5 @@ rpcbind
 unfsd -s
 rcpd -root_dir=/srv &
 #tftpd -root_dir=/srv &
+lighttpd -f /etc/lighttpd/lighttpd.conf
 wfm -chroot /srv -addr :80 -nopass_rw -site_name unisrv -show_dot
