@@ -1,4 +1,4 @@
-FROM golang as gobuilder
+FROM golang AS gobuilder
 WORKDIR /src
 RUN git clone https://github.com/tenox7/wfm.git
 WORKDIR /src/wfm
@@ -20,7 +20,7 @@ RUN CGO_ENABLED=0 GOOS=linux GOARCH=${TARGETARCH} go build -o /rcpd-${TARGETARCH
 #ARG TARGETARCH
 #RUN CGO_ENABLED=0 GOOS=linux GOARCH=${TARGETARCH} go build -o /tftpd-${TARGETARCH}
 
-FROM tenox7/unrar as unrar
+FROM tenox7/unrar AS unrar
 
 FROM alpine
 RUN apk add --no-cache unfs3 rpcbind e2fsprogs-extra proftpd samba-server busybox-extras file lzip lighttpd
