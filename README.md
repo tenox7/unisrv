@@ -69,6 +69,12 @@ Use nolock NFS mount option:
 mount -o nolock
 ```
 
+Alternative NFS user mode services:
+
+- https://github.com/willscott/go-nfs
+- https://github.com/smallfz/libnfs-go
+- https://github.com/sjiveson/nfs-server-alpine/tree/master
+
 ## References
 
 - https://github.com/voobscout/unfs3
